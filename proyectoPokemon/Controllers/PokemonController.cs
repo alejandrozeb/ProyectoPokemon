@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using proyectoPokemon.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,9 @@ namespace proyectoPokemon.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            PokemonService allPokemons = new PokemonService();
+            string[] pokemons = new string[] { "pikachu", "https..." };
+            return pokemons;
         }
 
         // GET api/<PokemonController>/5
