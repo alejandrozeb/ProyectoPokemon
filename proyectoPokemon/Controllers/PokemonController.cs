@@ -32,7 +32,8 @@ namespace proyectoPokemon.Controllers
         {
             PokemonService allPokemons = new PokemonService();
             PokemonClass singlePokemon = allPokemons.getSinglePokemon(name);
-            return name;
+            string response = JsonConvert.SerializeObject(singlePokemon);
+            return response;
         }
 
         // POST api/<PokemonController>
