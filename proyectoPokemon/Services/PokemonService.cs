@@ -19,7 +19,7 @@ namespace proyectoPokemon.Services
 
         public PokemonClass getSinglePokemon(string name) {
             PokemonRepository allPokemons = new PokemonRepository();
-            PokemonClass pokemon = allPokemons.obtainSinglePokemon();
+            PokemonClass pokemon = allPokemons.obtainSinglePokemon(name);
 
             return pokemon;
         }

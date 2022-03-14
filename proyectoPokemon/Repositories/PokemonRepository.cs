@@ -15,5 +15,11 @@ namespace proyectoPokemon.Repositories
             
             return pokemons;
         }
+
+        public PokemonClass obtainSinglePokemon(string name) {
+            DatabaseModel db = new DatabaseModel();
+            PokemonClass pokemon = db.findSinglePokemon(name);
+            return pokemon;
+        }
     }
 }
