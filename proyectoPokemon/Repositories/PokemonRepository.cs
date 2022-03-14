@@ -10,7 +10,6 @@ namespace proyectoPokemon.Repositories
     {
         public String[] obtainAllPokemons()
         {
-
             PokemonClass pokemon = new PokemonClass();
             //send request
             

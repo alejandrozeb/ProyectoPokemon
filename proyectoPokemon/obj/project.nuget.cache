@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Sf7XfgDO+xvh14DlzbtJfIt9WuWAVZGrpKre2qR+Wtv2lZYf4pfesPwN/+cmrittYqzPjVGx2yWzE16+ux1rvw==",
+  "dgSpecHash": "dzUMsbAuOz3y+PICAp91YHFjHzTcodBa+gSTVGYafoKTbpNlWpHWBUMZPQnCQ7iOzk/IpL2jU+d6K2ell20NzA==",
   "success": true,
   "projectFilePath": "C:\\Users\\win10\\source\\repos\\proyectoPokemon\\proyectoPokemon\\proyectoPokemon.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\win10\\.nuget\\packages\\npgsql\\6.0.3\\npgsql.6.0.3.nupkg.sha512",
+    "C:\\Users\\win10\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
+    "C:\\Users\\win10\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\win10\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
