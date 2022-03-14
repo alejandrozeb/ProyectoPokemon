@@ -8,12 +8,12 @@ namespace proyectoPokemon.Repositories
 {
     public class PokemonRepository
     {
-        public String[] obtainAllPokemons()
+        public PokemonClass[] obtainAllPokemons()
         {
-            PokemonClass pokemon = new PokemonClass();
-            //send request
+            DatabaseModel db = new DatabaseModel();
+            PokemonClass[] pokemons = db.getAllPokemons();
             
-            return new string[] { "pikachu", "https..." };
+            return pokemons;
         }
     }
 }
