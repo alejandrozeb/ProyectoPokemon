@@ -26,6 +26,19 @@ namespace proyectoPokemon.Models
             return resultPokemons;
         }
 
+        public PokemonClass findSinglePokemon(string name) {
+            PokemonClass pokemon = new PokemonClass();
+            string connectionDBString = this.buildConnectionString();
+
+            using (var connection = new NpgsqlConnection(connectionDBString))
+            {
+                connection.Open();
+                pokemon = this.getSinglePokemonQuery(connection,name);
+            }
+
+            return pokemon;
+        }
+
         private string buildConnectionString() {
             string connectionDBString = String.Format(
                 "Server={0};Username={1};Database={2};Port={3};Password={4};SSLMode=Prefer",
@@ -57,6 +70,22 @@ namespace proyectoPokemon.Models
             }
 
             return resultPokemons;
+        }
+
+        private PokemonClass getSinglePokemonQuery(NpgsqlConnection connection, string name) {
+            PokemonClass pokemon = new PokemonClass();
+            using (var command = new NpgsqlCommand($"SELECT id, name, url FROM pokemon WHERE name = '{name}'", connection))
+            {
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    pokemon.id = reader.GetInt32(0);
+                    pokemon.name = reader.GetString(1);
+                    pokemon.url = reader.GetString(2);   
+                }
+                reader.Close();
+            }
+            return pokemon;
         }
     }
 }
