@@ -3,15 +3,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using proyectoPokemon.Models;
 
 namespace proyectoPokemon.Services
 {
     public class PokemonService
     {
-        public String[] getAllPokemons()
+        public PokemonClass[] getAllPokemons()
         {
             PokemonRepository allPokemons = new PokemonRepository();
-            return new string[] { "pikachu", "https..." };
+            PokemonClass[] pokemons = allPokemons.obtainAllPokemons();
+
+            return pokemons;
         }
     }
 }
