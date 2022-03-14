@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using proyectoPokemon.Services;
+using proyectoPokemon.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +17,13 @@ namespace proyectoPokemon.Controllers
     {
         // GET: api/<PokemonController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public string Get()
         {
             PokemonService allPokemons = new PokemonService();
-            string[] pokemons = new string[] { "pikachu", "https..." };
-            return pokemons;
+            PokemonClass[] pokemons = allPokemons.getAllPokemons();
+            //string[] pokemons = new string[] { "pikachu", "https..." };
+            string response = JsonConvert.SerializeObject(pokemons);
+            return response;
         }
 
         // GET api/<PokemonController>/5

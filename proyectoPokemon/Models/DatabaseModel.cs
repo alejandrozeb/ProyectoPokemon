@@ -14,7 +14,7 @@ namespace proyectoPokemon.Models
         private static string Password = "alejandro";
         private static string Port = "5432";
 
-        public PokemonClass[] getAllPokemons()
+        public List<PokemonClass> getAllPokemons()
         {
             string connString = String.Format(
                 "Server={0};Username={1};Database={2};Port={3};Password={4};SSLMode=Prefer",
@@ -24,7 +24,7 @@ namespace proyectoPokemon.Models
                  Port,
                  Password
                  );
-            PokemonClass[] resultPokemons = new PokemonClass[] { };
+            List<PokemonClass> resultPokemons = new List<PokemonClass>();
 
             using (var conn = new NpgsqlConnection(connString))
             {
@@ -41,7 +41,7 @@ namespace proyectoPokemon.Models
                         Console.Out.WriteLine(
                             pokemon.name + " " + pokemon.url + " " + pokemon.id
                             );
-                        resultPokemons.Append(pokemon);
+                        resultPokemons.Add(pokemon);
                     }
                     reader.Close();
                     //var reader = command.ExecuteReader();
@@ -49,7 +49,6 @@ namespace proyectoPokemon.Models
                     Console.Out.WriteLine("cccccccccc");
                 }
             }
-
             return resultPokemons;
         }
     }
