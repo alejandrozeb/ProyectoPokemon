@@ -16,5 +16,12 @@ namespace proyectoPokemon.Services
 
             return pokemons;
         }
+
+        public PokemonClass getSinglePokemon(string name) {
+            PokemonRepository allPokemons = new PokemonRepository();
+            PokemonClass pokemon = allPokemons.obtainSinglePokemon();
+
+            return pokemon;
+        }
     }
 }
