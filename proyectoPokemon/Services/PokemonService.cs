@@ -9,10 +9,10 @@ namespace proyectoPokemon.Services
 {
     public class PokemonService
     {
-        public PokemonClass[] getAllPokemons()
+        public List<PokemonClass> getAllPokemons()
         {
             PokemonRepository allPokemons = new PokemonRepository();
-            PokemonClass[] pokemons = allPokemons.obtainAllPokemons();
+            List<PokemonClass> pokemons = allPokemons.obtainAllPokemons();
 
             return pokemons;
         }

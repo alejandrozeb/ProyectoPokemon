@@ -8,10 +8,10 @@ namespace proyectoPokemon.Repositories
 {
     public class PokemonRepository
     {
-        public PokemonClass[] obtainAllPokemons()
+        public List<PokemonClass> obtainAllPokemons()
         {
             DatabaseModel db = new DatabaseModel();
-            PokemonClass[] pokemons = db.getAllPokemons();
+            List<PokemonClass> pokemons = db.getAllPokemons();
             
             return pokemons;
         }
