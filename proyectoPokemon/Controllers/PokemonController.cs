@@ -26,11 +26,13 @@ namespace proyectoPokemon.Controllers
             return response;
         }
 
-        // GET api/<PokemonController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // GET api/<PokemonController>/pikachu
+        [HttpGet("{name}")]
+        public string Get(string name)
         {
-            return "value";
+            PokemonService allPokemons = new PokemonService();
+            PokemonClass singlePokemon = allPokemons.getSinglePokemon(name);
+            return name;
         }
 
         // POST api/<PokemonController>
