@@ -11,7 +11,7 @@ namespace proyectoPokemon.Repositories
         public List<PokemonClass> obtainAllPokemons()
         {
             DatabaseModel db = new DatabaseModel();
-            List<PokemonClass> pokemons = db.getAllPokemons();
+            List<PokemonClass> pokemons = db.findAllPokemons();
             
             return pokemons;
         }

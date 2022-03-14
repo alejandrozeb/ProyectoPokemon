@@ -21,8 +21,8 @@ namespace proyectoPokemon.Controllers
         {
             PokemonService allPokemons = new PokemonService();
             List<PokemonClass> pokemons = allPokemons.getAllPokemons();
-            //string[] pokemons = new string[] { "pikachu", "https..." };
             string response = JsonConvert.SerializeObject(pokemons);
+
             return response;
         }
 

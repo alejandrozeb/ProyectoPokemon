@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Npgsql;
 
 namespace proyectoPokemon.Models
 {
@@ -14,9 +12,22 @@ namespace proyectoPokemon.Models
         private static string Password = "alejandro";
         private static string Port = "5432";
 
-        public List<PokemonClass> getAllPokemons()
+        public List<PokemonClass> findAllPokemons()
         {
-            string connString = String.Format(
+            List<PokemonClass> resultPokemons = new List<PokemonClass>();
+            string connectionDBString = this.buildConnectionString();
+
+            using (var connection = new NpgsqlConnection(connectionDBString))
+            {
+                connection.Open();
+                resultPokemons = this.getAllPokemonQuery(connection);
+            }
+
+            return resultPokemons;
+        }
+
+        private string buildConnectionString() {
+            string connectionDBString = String.Format(
                 "Server={0};Username={1};Database={2};Port={3};Password={4};SSLMode=Prefer",
                  Host,
                  User,
@@ -24,31 +35,27 @@ namespace proyectoPokemon.Models
                  Port,
                  Password
                  );
+
+            return connectionDBString;
+        }
+        private List<PokemonClass>  getAllPokemonQuery(NpgsqlConnection connection) {
             List<PokemonClass> resultPokemons = new List<PokemonClass>();
 
-            using (var conn = new NpgsqlConnection(connString))
+            using (var command = new NpgsqlCommand("SELECT * FROM pokemon", connection))
             {
-                conn.Open();
-                using (var command = new NpgsqlCommand("SELECT * FROM pokemon", conn))
+                var reader = command.ExecuteReader();
+                while (reader.Read())
                 {
-                    var reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        PokemonClass pokemon = new PokemonClass();
-                        pokemon.id = reader.GetInt32(0);
-                        pokemon.name = reader.GetString(1);
-                        pokemon.url = reader.GetString(2);
-                        Console.Out.WriteLine(
-                            pokemon.name + " " + pokemon.url + " " + pokemon.id
-                            );
-                        resultPokemons.Add(pokemon);
-                    }
-                    reader.Close();
-                    //var reader = command.ExecuteReader();
-                    Console.Out.WriteLine(reader);
-                    Console.Out.WriteLine("cccccccccc");
+                    PokemonClass pokemon = new PokemonClass();
+                    pokemon.id = reader.GetInt32(0);
+                    pokemon.name = reader.GetString(1);
+                    pokemon.url = reader.GetString(2);
+
+                    resultPokemons.Add(pokemon);
                 }
+                reader.Close();
             }
+
             return resultPokemons;
         }
     }
