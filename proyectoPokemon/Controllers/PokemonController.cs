@@ -38,8 +38,12 @@ namespace proyectoPokemon.Controllers
 
         // POST api/<PokemonController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult Post([FromBody] PokemonClass value)
         {
+            PokemonService allPokemons = new PokemonService();
+            allPokemons.createSinglePokemon();
+
+            return StatusCode(201);
         }
 
         // PUT api/<PokemonController>/5
